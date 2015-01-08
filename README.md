@@ -1,2 +1,2 @@
 # leetcode
-LeetCode OJ problems I solved.
+LeetCode OJ problems I tried.
