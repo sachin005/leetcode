@@ -1,0 +1,30 @@
+public class Solution {
+    public int[] plusOne(int[] digits) {
+        int len = digits.length;
+        digits[len - 1] += 1;
+        if(digits[len - 1] < 10) {
+            return digits;
+        }
+        else {
+            int i = len - 1;
+            while(digits[i] > 9) {
+                if(i == 0) {
+                    int[] ans = new int[digits.length + 1];
+                    ans[0] = digits[0] / 10;
+                    ans[1] = digits[0] % 10;
+                    for(int n = 1; n < len; n++) {
+                        ans[n + 1] = digits[n];
+                    }
+                    return ans;
+                }
+                else {
+                    int last = digits[i];
+                    digits[i] = last % 10;
+                    digits[i - 1] += last / 10;
+                    i--;
+                }
+            }
+            return digits;
+        }
+    }
+}
