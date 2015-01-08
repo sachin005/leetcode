@@ -1,0 +1,64 @@
+public class Solution {
+    public int atoi(String str) {
+        str = str.trim();
+        int len = str.length();
+        if(len < 1) {
+            return 0;
+        }
+        if(str.contains("-") && str.contains("+"))
+        if(str.indexOf("-") - str.indexOf("+") == 1 || str.indexOf("-") - str.indexOf("+") == -1) {
+            return 0;
+        }
+        
+        int i = 0, n = 0;
+        boolean neg = false;
+        StringBuilder num = new StringBuilder();
+        String curr = "";
+        if(str.charAt(i) == '-') {
+                i++;
+                neg = true;
+        }
+        else if(str.charAt(i) == '+') {
+                i++;
+        }
+        try{
+            while(i < len) {
+                    curr = Character.toString(str.charAt(i));
+            
+                    n = Integer.parseInt(curr);
+                    if(n >= 0 && n < 10) {
+                        num.append(n);
+                    }
+                    i++;
+                }
+                if(neg) {
+    	            return Integer.parseInt(num.toString()) * -1;
+                }
+                else{
+                    return Integer.parseInt(num.toString());
+                }
+                
+            }
+        catch(Exception e) {
+                try{
+                    if(num.length() > 0 && !neg) {
+                      return Integer.parseInt(num.toString());
+                    }
+                    else if(num.length() > 0 && neg) {
+                      return Integer.parseInt(num.toString()) * -1;
+                    }
+                    else {
+                        return 0;
+                    }
+                }
+                catch(NumberFormatException nfe) {
+                        if(neg) {
+                            return -2147483648;
+                        }
+                        else {
+                            return 2147483647;
+                        }
+                }
+        }
+    }
+}
