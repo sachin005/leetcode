@@ -1,0 +1,23 @@
+public class Solution {
+    public String reverseWords(String s) {
+        StringBuffer sb = new StringBuffer(s.trim());
+        StringBuffer res = new StringBuffer("");
+        int last = sb.lastIndexOf(" ");
+        if(!(last > -1)) {
+            return res.append(sb).toString();
+        }
+        while(sb.length() > 0) {
+            last = sb.lastIndexOf(" ");
+            if(sb.length() == 1 || last == -1) {
+                res.append(sb);
+                return res.toString();
+            }
+            res.append(sb.substring(last + 1).trim() + " ");
+            sb = sb.delete(last, sb.length());
+            while(sb.lastIndexOf(" ") == sb.length() - 1) {
+                sb = sb.deleteCharAt(sb.length() - 1); 
+            }
+        }
+        return res.toString().trim();
+    }
+}
