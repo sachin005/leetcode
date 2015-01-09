@@ -1,0 +1,27 @@
+public class Solution {
+    public int reverse(int x) {
+        String str = String.valueOf(x);
+        boolean neg = false;
+        if(str.startsWith("-")) {
+            neg = true;
+            str = str.substring(1);
+        }
+        int len = str.length();
+        String res = "";
+        while(len > 0) {
+            res = res + Character.toString(str.charAt(len - 1));
+            len--;
+        }
+        try {
+            if(neg) {
+                return Integer.parseInt(res) * -1;
+            }
+            else {
+                return Integer.parseInt(res);
+            }
+        }
+        catch(NumberFormatException ne) {
+            return 0;
+        }
+    }
+}
